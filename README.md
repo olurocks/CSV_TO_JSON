@@ -20,8 +20,7 @@ to a JSON file
 *After extracting the files, navigate to the directory 
 
 * open the directory in your terminal/console and run
-```
-python3 csvtojson.py```
+```python3 csvtojson.py```
 
 *Note: if you don't have python3 installed, kindly use the python version that you have
 
