@@ -11,7 +11,7 @@ def csvToJson(csv_path, json_path):
 
         csvData = csv.DictReader(csvfile)
         for rows in csvData:
-            key = rows['']
+            key = rows['Filename']
             jsonData[key] = rows
 
     with open(json_path,'w', encoding='utf-8') as jsonfile:
