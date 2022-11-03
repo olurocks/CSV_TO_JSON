@@ -47,7 +47,8 @@ with open(csv_path,'r') as origFile:
 
             lineList.append(json_sha256)
             lineStr = str(lineList)
-            lineStr = lineStr.replace("'", "")
+            lineStr = lineStr.replace("'", "").replace("[","").replace("]","")
+            lineStr = lineStr
 
             newFile.write(lineStr)
             newFile.write('\n') #Insert a new line
