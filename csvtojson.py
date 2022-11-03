@@ -1,5 +1,6 @@
 import csv
 import json
+import hashlib
 
 
 
@@ -22,3 +23,32 @@ json_path = r'jsonfile.json'
 
 csvToJson(csv_path, json_path)
 
+
+#find SHA256 hexadecimal of json file and append to output.csv
+
+def sha256Calc(fileName):
+    with open(fileName,"rb") as f:
+        bytes = f.read() # read entire file as bytes
+        readable_hash = hashlib.sha256(bytes).hexdigest();
+        return readable_hash
+
+
+json_sha256=sha256Calc(json_path)
+new_file = r'output.csv'
+i = 0
+
+with open(csv_path,'r') as origFile:
+    with open(new_file,'w') as newFile:
+
+        lineList = []
+        for line in origFile:
+            strippedLine = line.strip()
+            lineList = strippedLine.split(',')
+
+            lineList.append(json_sha256)
+            lineStr = str(lineList)
+            lineStr = lineStr.replace("'", "")
+
+            newFile.write(lineStr)
+            newFile.write('\n') #Insert a new line
+            i += 1
